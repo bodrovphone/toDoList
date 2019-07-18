@@ -42,7 +42,7 @@ export default class SingleTask extends Component {
             onChange={updateTasks}
             checked={isDone}
           />
-          <label for={index} className={isDone ? 'task-is-done' : ''}>
+          <label htmlFor={index} className={isDone ? 'task-is-done' : ''}>
             {name}
           </label>
           <DeleteTaskStyles data-index={index} onClick={deleteTask} />

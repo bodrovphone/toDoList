@@ -7,39 +7,33 @@ export default class Footer extends Component {
     let { enableFilter, activeFilter, clearCompleted } = this.props;
     return (
       <FooterStyles className="container-row">
-        <div className="flex-item">
-          {items > 1 ? `${items} items` : `${items} item`} left
-        </div>
-        <div className="flex-item container-row">
+        <div>{items > 1 ? `${items} items` : `${items} item`} left</div>
+        <div className="container-row">
           <button
             onClick={enableFilter}
             id="all"
-            className={`flex-item filter ${
-              activeFilter === 'all' ? 'enabled' : ''
-            }`}
+            className={`filter ${activeFilter === 'all' ? 'enabled' : ''}`}
           >
             All
           </button>
           <button
             onClick={enableFilter}
             id="active"
-            className={`flex-item filter ${
-              activeFilter === 'active' ? 'enabled' : ''
-            }`}
+            className={`filter ${activeFilter === 'active' ? 'enabled' : ''}`}
           >
             Active
           </button>
           <button
             onClick={enableFilter}
             id="completed"
-            className={`flex-item filter ${
+            className={`filter ${
               activeFilter === 'completed' ? 'enabled' : ''
             }`}
           >
             Completed
           </button>
         </div>
-        <button className="flex-item clear-items" onClick={clearCompleted}>
+        <button className="clear-items" onClick={clearCompleted}>
           Clear completed
         </button>
       </FooterStyles>

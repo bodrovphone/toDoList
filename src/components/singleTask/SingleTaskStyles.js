@@ -23,6 +23,10 @@ export const SingleTaskStyles = styled.div`
   button {
     margin-left: auto;
   }
+  label {
+    margin: auto 15px;
+    width: 100%;
+  }
   .task-is-done {
     text-decoration: line-through;
     color: #d9d9d9;

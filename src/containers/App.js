@@ -1,5 +1,5 @@
 // lib
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 // components
 import AddTask from '../components/addTask';
@@ -26,13 +26,13 @@ export default class App extends Component {
 
   updateTasks = event => {
     const id = Number(event.target.id);
-    let { tasks } = this.state;
+    let { tasks } = Object.assign({}, this.state);
     tasks[id].done = !tasks[id].done;
     this.setState({ tasks });
   };
 
   toggleAll = event => {
-    const { tasks } = this.state;
+    let { tasks } = Object.assign({}, this.state);
     if (!tasks.length) return;
     const toggle = event.target.checked ? true : false;
     const newData = tasks.map(function(task) {
@@ -44,7 +44,7 @@ export default class App extends Component {
 
   deleteTask = event => {
     const index = +event.target.dataset.index;
-    let { tasks } = this.state;
+    let { tasks } = Object.assign({}, this.state);
     tasks.splice(index, 1);
     this.setState({ tasks });
   };
@@ -54,7 +54,7 @@ export default class App extends Component {
   };
 
   clearCompleted = () => {
-    const { tasks } = this.state;
+    let { tasks } = Object.assign({}, this.state);
     const newData = tasks.filter(task => !task.done);
     this.setState({ tasks: newData });
   };
@@ -66,16 +66,16 @@ export default class App extends Component {
       event.key === 'Enter' || event.type === 'blur'
         ? event.target.value
         : event.currentTarget.childNodes[1].innerHTML;
-    const { tasks } = this.state;
+    let { tasks } = Object.assign({}, this.state);
     tasks[id].edit = !tasks[id].edit;
     tasks[id].name = value;
     this.setState({ tasks });
   };
 
   render() {
-    const { tasks, activeFilter } = this.state;
+    const { tasks, activeFilter } = Object.assign({}, this.state);
     return (
-      <div>
+      <Fragment>
         <AddTask newTask={this.addTask} toggleAll={this.toggleAll} />
         <CurrentTasks
           allTasks={tasks}
@@ -86,7 +86,7 @@ export default class App extends Component {
           clearCompleted={this.clearCompleted}
           editTask={this.editTask}
         />
-      </div>
+      </Fragment>
     );
   }
 }
