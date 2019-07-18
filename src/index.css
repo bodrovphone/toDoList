@@ -1,13 +1,86 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    background-color: #f5f5f5;
+}
+#root {
+    max-width: 640px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    margin: 100px auto;
+    position: relative;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.flex-item {
+  margin: auto 0px;
+}
+
+.checkbox,.select-all {
+  margin: auto 15px;
+}
+
+input[type="text"].add-task::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(230, 230, 230);
+}
+input[type="text"].add-task::-moz-placeholder { /* Firefox 19+ */
+  color: rgb(230, 230, 230);
+}
+input[type="text"].add-task:-ms-input-placeholder { /* IE 10+ */
+  color: rgb(230, 230, 230);
+}
+input[type="text"].add-task:-moz-placeholder { /* Firefox 18- */
+  color: rgb(230, 230, 230);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    border: none;
+}
+
+input,
+select,
+textarea,
+button {
+    outline: none;
+    border: none;
+}
+
+.container,.container-row {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: column;
+}
+.container-row {
+  flex-direction: row;
+}
+
+input[type=checkbox]:after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+}
+
+input[type=checkbox]:checked:after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+}
+
+button.flex-item {
+  margin: 0 10px;
+}
+
+button.enabled {
+  border: 2px solid #c9b9e1;
+  border-radius: 6px;
+}
+
+button.filter:hover {
+  cursor: pointer;
+  outline: 1px solid #dfd8e9;
+}
+
+.clear-items:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
