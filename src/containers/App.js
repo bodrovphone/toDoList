@@ -47,12 +47,12 @@ class App extends Component {
     this.setState({ ...newData });
   };
 
-  deleteTask = event => {
-    const index = +event.target.dataset.index;
-    let { tasks } = Object.assign({}, this.state);
-    tasks.splice(index, 1);
-    this.setState({ tasks });
-  };
+  // deleteTask = event => {
+  //   const index = +event.target.dataset.index;
+  //   let { tasks } = Object.assign({}, this.state);
+  //   tasks.splice(index, 1);
+  //   this.setState({ tasks });
+  // };
 
   enableFilter = event => {
     this.setState({ activeFilter: event.target.id });
@@ -85,7 +85,7 @@ class App extends Component {
         <CurrentTasks
           allTasks={this.props.tasks}
           updateTasks={this.updateTasks}
-          deleteTask={this.deleteTask}
+          deleteTask={this.props.deleteTask}
           enableFilter={this.enableFilter}
           activeFilter={activeFilter}
           clearCompleted={this.clearCompleted}
@@ -103,5 +103,5 @@ function mapStoreToProps(store) {
 // export
 export default connect(
   mapStoreToProps,
-  { addTask }
+  { addTask, deleteTask }
 )(App);
