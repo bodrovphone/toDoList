@@ -13,7 +13,9 @@ export default class AddTask extends Component {
   render() {
     return (
       <AddTaskStyles>
-        <input type="checkbox" onChange={this.props.toggleAll} />
+        {this.props.isToggable && (
+          <input type="checkbox" onChange={this.props.toggleAll} />
+        )}
         <input
           type="text"
           placeholder="What needs to be done?"

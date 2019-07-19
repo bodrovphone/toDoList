@@ -14,8 +14,17 @@ export default class SingleTask extends Component {
     event.currentTarget.lastChild.classList.remove('delete');
   };
 
+  conditionalEdit = event => {
+    console.log(event.type, event.key);
+
+    if (event.type === 'keypress' && event.key !== 'Enter') {
+      return;
+    }
+    this.props.editTask(event);
+  };
   isEditable = edit => {
-    let { index, name, editTask, updateTasks, isDone, deleteTask } = this.props;
+    let { index, name, editTask, updateTask, isDone, deleteTask } = this.props;
+
     if (edit) {
       return (
         <EditableInputStyles
@@ -23,7 +32,7 @@ export default class SingleTask extends Component {
           data-index={index}
           type="text"
           defaultValue={name}
-          onKeyPress={editTask}
+          onKeyPress={this.conditionalEdit}
           onBlur={editTask}
         />
       );
@@ -39,7 +48,7 @@ export default class SingleTask extends Component {
             type="checkbox"
             id={index}
             name={name}
-            onChange={updateTasks}
+            onChange={updateTask}
             checked={isDone}
           />
           <label htmlFor={index} className={isDone ? 'task-is-done' : ''}>

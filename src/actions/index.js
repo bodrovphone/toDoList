@@ -13,14 +13,14 @@ const addTask = task => ({
   payload: task
 });
 
-const editTask = tasks => ({
+const editTask = event => ({
   type: EDIT_TASK,
-  payload: tasks
+  payload: event
 });
 
-const updateTask = task => ({
+const updateTask = event => ({
   type: UPDATE_TASK,
-  payload: task
+  payload: Number(event.target.id)
 });
 
 const deleteTask = event => ({
@@ -28,14 +28,14 @@ const deleteTask = event => ({
   payload: +event.target.dataset.index
 });
 
-const toggleTask = bool => ({
+const toggleTasks = event => ({
   type: TOGGLE_TASKS,
-  payload: bool
+  payload: event.target.checked
 });
 
-const enableFilter = filter => ({
+const enableFilter = event => ({
   type: ENABLE_FILTER,
-  payload: filter
+  payload: event
 });
 
 const clearCompleted = bool => ({
@@ -48,7 +48,7 @@ export {
   editTask,
   updateTask,
   deleteTask,
-  toggleTask,
+  toggleTasks,
   enableFilter,
   clearCompleted
 };

@@ -8,6 +8,7 @@ import SheetsEffectStyles from './SheetsEffectStyles';
 
 export default class CurrentTasks extends Component {
   conditionalRender = (allTasks, filter) => {
+    const { editTask } = this.props;
     if (filter === 'active') {
       allTasks = allTasks.filter(task => !task.done);
     }
@@ -17,12 +18,12 @@ export default class CurrentTasks extends Component {
     return allTasks.map((task, index) => {
       return (
         <SingleTask
-          {...this.props}
           isDone={task.done}
           key={index}
           index={index}
           name={task.name}
           edit={task.edit}
+          editTask={editTask}
         >
           {task.name}
         </SingleTask>
