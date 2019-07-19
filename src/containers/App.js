@@ -1,11 +1,22 @@
 // lib
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 // components
 import AddTask from '../components/addTask';
 import CurrentTasks from '../components/currentTasks';
 
-export default class App extends Component {
+// actions
+import {
+  addTask,
+  updateTask,
+  deleteTask,
+  toggleTask,
+  enableFilter,
+  clearCompleted
+} from '../actions';
+
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = JSON.parse(localStorage.getItem('obodrovToDos')) || {
@@ -15,14 +26,8 @@ export default class App extends Component {
   }
 
   componentDidUpdate() {
-    localStorage.obodrovToDos = JSON.stringify(this.state);
+    localStorage.obodrovToDos = JSON.stringify(this.props);
   }
-
-  addTask = task => {
-    this.setState({
-      ...this.state.tasks.push({ name: task, done: false, edit: false })
-    });
-  };
 
   updateTasks = event => {
     const id = Number(event.target.id);
@@ -73,12 +78,12 @@ export default class App extends Component {
   };
 
   render() {
-    const { tasks, activeFilter } = Object.assign({}, this.state);
+    const { tasks, activeFilter } = this.props;
     return (
       <Fragment>
-        <AddTask newTask={this.addTask} toggleAll={this.toggleAll} />
+        <AddTask newTask={this.props.addTask} toggleAll={this.toggleAll} />
         <CurrentTasks
-          allTasks={tasks}
+          allTasks={this.props.tasks}
           updateTasks={this.updateTasks}
           deleteTask={this.deleteTask}
           enableFilter={this.enableFilter}
@@ -90,3 +95,13 @@ export default class App extends Component {
     );
   }
 }
+
+function mapStoreToProps(store) {
+  return store;
+}
+
+// export
+export default connect(
+  mapStoreToProps,
+  { addTask }
+)(App);
