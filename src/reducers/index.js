@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import {
   ADD_TASK,
   EDIT_TASK,
@@ -23,20 +25,16 @@ export default function(state = initialState, action) {
           { name: action.payload, done: false, edit: false }
         ]
       };
-      break;
     case EDIT_TASK:
       return {
         ...state,
         tasks: action.payload.tasks
       };
-      break;
     case DELETE_TASK:
-      var newState = { ...state };
+      var newState = _.cloneDeep(state);
       newState.tasks.splice(action.payload, 1);
-      console.log('newState', action.payload, newState);
 
-      return { ...newState };
-      break;
+      return newState;
     default:
       return state;
   }
