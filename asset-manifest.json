@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bodrovphone/toDoList/static/css/main.3f564c8d.chunk.css",
+    "main.js": "/bodrovphone/toDoList/static/js/main.a4875f39.chunk.js",
+    "main.js.map": "/bodrovphone/toDoList/static/js/main.a4875f39.chunk.js.map",
+    "runtime~main.js": "/bodrovphone/toDoList/static/js/runtime~main.8a5bff36.js",
+    "runtime~main.js.map": "/bodrovphone/toDoList/static/js/runtime~main.8a5bff36.js.map",
+    "static/js/2.0d3c171d.chunk.js": "/bodrovphone/toDoList/static/js/2.0d3c171d.chunk.js",
+    "static/js/2.0d3c171d.chunk.js.map": "/bodrovphone/toDoList/static/js/2.0d3c171d.chunk.js.map",
+    "index.html": "/bodrovphone/toDoList/index.html",
+    "precache-manifest.fe6451bc0be85381f4e8b12f7c85d76c.js": "/bodrovphone/toDoList/precache-manifest.fe6451bc0be85381f4e8b12f7c85d76c.js",
+    "service-worker.js": "/bodrovphone/toDoList/service-worker.js",
+    "static/css/main.3f564c8d.chunk.css.map": "/bodrovphone/toDoList/static/css/main.3f564c8d.chunk.css.map"
+  }
+}
