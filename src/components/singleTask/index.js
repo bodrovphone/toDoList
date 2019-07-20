@@ -15,8 +15,6 @@ export default class SingleTask extends Component {
   };
 
   conditionalEdit = event => {
-    console.log(event.type, event.key);
-
     if (event.type === 'keypress' && event.key !== 'Enter') {
       return;
     }
@@ -41,7 +39,10 @@ export default class SingleTask extends Component {
         <SingleTaskStyles
           onMouseEnter={this.handleOnMouseOver}
           onMouseLeave={this.handleOffMouseOver}
-          onDoubleClick={editTask}
+          onDoubleClick={e => {
+            const eventClone = e;
+            editTask(eventClone);
+          }}
           data-index={index}
         >
           <input

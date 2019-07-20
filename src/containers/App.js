@@ -19,7 +19,10 @@ import {
 
 class App extends Component {
   componentDidUpdate() {
-    localStorage.obodrovToDos = JSON.stringify(this.props);
+    localStorage.obodrovToDos = JSON.stringify({
+      tasks: this.props.tasks,
+      activeFilter: this.props.activeFilter
+    });
   }
 
   render() {
@@ -41,15 +44,7 @@ class App extends Component {
           toggleAll={toggleTasks}
           isToggable={tasks.length}
         />
-        <CurrentTasks
-          allTasks={tasks}
-          updateTask={updateTask}
-          deleteTask={deleteTask}
-          enableFilter={enableFilter}
-          activeFilter={activeFilter}
-          clearCompleted={clearCompleted}
-          editTask={editTask}
-        />
+        <CurrentTasks allTasks={tasks} {...this.props} />
       </Fragment>
     );
   }
