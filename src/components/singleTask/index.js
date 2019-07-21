@@ -14,8 +14,12 @@ export default class SingleTask extends Component {
     event.currentTarget.lastChild.classList.remove('delete');
   };
 
+  handleChange = event => {
+    this.props.updateTasks(event);
+  };
+
   isEditable = edit => {
-    let { index, name, editTask, updateTasks, isDone, deleteTask } = this.props;
+    let { index, name, editTask, isDone, deleteTask } = this.props;
     if (edit) {
       return (
         <EditableInputStyles
@@ -39,7 +43,7 @@ export default class SingleTask extends Component {
             type="checkbox"
             id={index}
             name={name}
-            onChange={updateTasks}
+            onChange={this.handleChange}
             checked={isDone}
           />
           <label htmlFor={index} className={isDone ? 'task-is-done' : ''}>
